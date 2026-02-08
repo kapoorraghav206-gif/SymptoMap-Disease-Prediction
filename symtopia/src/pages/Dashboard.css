@@ -1,0 +1,409 @@
+/**
+ * Dashboard Page Styles
+ * 
+ * Styles for the outbreak risk dashboard including
+ * stats cards, heatmap placeholder, and risk cards grid.
+ */
+
+.dashboard-page {
+    background: linear-gradient(180deg, var(--color-gray-50) 0%, var(--color-white) 100%);
+}
+
+/* Dashboard Stats */
+.dashboard-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-3xl);
+}
+
+.dashboard-stat-card {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-lg);
+    padding: var(--spacing-xl);
+    background: var(--color-white);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-md);
+    transition: all var(--transition-base);
+}
+
+.dashboard-stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.stat-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: var(--radius-xl);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.stat-icon svg {
+    width: 28px;
+    height: 28px;
+}
+
+.stat-icon.total {
+    background: var(--color-primary-subtle);
+    color: var(--color-primary);
+}
+
+.stat-icon.high {
+    background: rgba(239, 68, 68, 0.1);
+    color: var(--risk-high);
+}
+
+.stat-icon.medium {
+    background: rgba(245, 158, 11, 0.1);
+    color: var(--risk-medium);
+}
+
+.stat-icon.low {
+    background: rgba(34, 197, 94, 0.1);
+    color: var(--risk-low);
+}
+
+.stat-info {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+}
+
+.stat-info .stat-value {
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-gray-800);
+    line-height: 1;
+}
+
+.stat-info .stat-label {
+    font-size: var(--font-size-sm);
+    color: var(--color-gray-500);
+}
+
+/* Section Header */
+.section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-xl);
+}
+
+.section-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: var(--spacing-xs) var(--spacing-md);
+    background: var(--color-primary-subtle);
+    color: var(--color-primary);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-medium);
+    border-radius: var(--radius-full);
+}
+
+/* Heatmap Section */
+.heatmap-section {
+    margin-bottom: var(--spacing-3xl);
+}
+
+.heatmap-placeholder {
+    position: relative;
+    min-height: 400px;
+    background: linear-gradient(135deg, var(--color-gray-100) 0%, var(--color-gray-50) 100%);
+    border-radius: var(--radius-2xl);
+    border: 2px dashed var(--color-gray-200);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.map-placeholder-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    max-width: 400px;
+    padding: var(--spacing-xl);
+}
+
+.map-icon {
+    width: 64px;
+    height: 64px;
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-lg);
+    opacity: 0.5;
+}
+
+.map-placeholder-content h3 {
+    font-size: var(--font-size-xl);
+    color: var(--color-gray-700);
+    margin-bottom: var(--spacing-md);
+}
+
+.map-placeholder-content p {
+    font-size: var(--font-size-base);
+    color: var(--color-gray-500);
+    margin-bottom: var(--spacing-lg);
+    line-height: 1.6;
+}
+
+.map-tech-note {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm) var(--spacing-lg);
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    font-size: var(--font-size-sm);
+    color: var(--color-gray-600);
+}
+
+.map-tech-note svg {
+    width: 16px;
+    height: 16px;
+    color: var(--color-primary);
+}
+
+/* Map Decoration - Animated dots */
+.map-decoration {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+.map-dot {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    animation: mapDotPulse 3s ease-in-out infinite;
+}
+
+.dot-1 {
+    top: 20%;
+    left: 25%;
+    background: radial-gradient(circle, rgba(239, 68, 68, 0.4) 0%, transparent 70%);
+    animation-delay: 0s;
+}
+
+.dot-2 {
+    top: 40%;
+    left: 50%;
+    background: radial-gradient(circle, rgba(245, 158, 11, 0.4) 0%, transparent 70%);
+    animation-delay: 0.5s;
+}
+
+.dot-3 {
+    top: 60%;
+    left: 70%;
+    background: radial-gradient(circle, rgba(34, 197, 94, 0.4) 0%, transparent 70%);
+    animation-delay: 1s;
+}
+
+.dot-4 {
+    top: 30%;
+    right: 20%;
+    background: radial-gradient(circle, rgba(239, 68, 68, 0.4) 0%, transparent 70%);
+    animation-delay: 1.5s;
+}
+
+.dot-5 {
+    bottom: 25%;
+    left: 30%;
+    background: radial-gradient(circle, rgba(34, 197, 94, 0.4) 0%, transparent 70%);
+    animation-delay: 2s;
+}
+
+@keyframes mapDotPulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 0.6;
+    }
+
+    50% {
+        transform: scale(1.5);
+        opacity: 0.3;
+    }
+}
+
+/* Filter Buttons */
+.filter-buttons {
+    display: flex;
+    gap: var(--spacing-sm);
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    padding: var(--spacing-sm) var(--spacing-lg);
+    font-family: var(--font-family);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-gray-600);
+    background: var(--color-white);
+    border: 2px solid var(--color-gray-200);
+    border-radius: var(--radius-full);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.filter-btn:hover {
+    border-color: var(--color-gray-300);
+    background: var(--color-gray-50);
+}
+
+.filter-btn.active {
+    color: var(--color-white);
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+}
+
+.filter-btn.filter-high.active {
+    background: var(--risk-high);
+    border-color: var(--risk-high);
+}
+
+.filter-btn.filter-medium.active {
+    background: var(--risk-medium);
+    border-color: var(--risk-medium);
+}
+
+.filter-btn.filter-low.active {
+    background: var(--risk-low);
+    border-color: var(--risk-low);
+}
+
+/* Risk Cards Section */
+.risk-cards-section {
+    margin-bottom: var(--spacing-3xl);
+}
+
+.risk-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-lg);
+}
+
+/* Empty State */
+.empty-state {
+    text-align: center;
+    padding: var(--spacing-3xl);
+    background: var(--color-white);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-sm);
+}
+
+.empty-state svg {
+    width: 48px;
+    height: 48px;
+    color: var(--color-gray-300);
+    margin-bottom: var(--spacing-lg);
+}
+
+.empty-state p {
+    color: var(--color-gray-500);
+    margin: 0;
+}
+
+/* Data Notice */
+.data-notice {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-md);
+    padding: var(--spacing-lg);
+    background: rgba(59, 130, 246, 0.05);
+    border: 1px solid rgba(59, 130, 246, 0.1);
+    border-radius: var(--radius-xl);
+    margin-top: var(--spacing-xl);
+}
+
+.data-notice svg {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    color: var(--color-info);
+}
+
+.data-notice p {
+    font-size: var(--font-size-sm);
+    color: var(--color-gray-600);
+    margin: 0;
+    line-height: 1.6;
+}
+
+.data-notice strong {
+    color: var(--color-gray-700);
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+    .risk-cards-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 1024px) {
+    .dashboard-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .risk-cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .dashboard-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .dashboard-stat-card {
+        padding: var(--spacing-lg);
+    }
+
+    .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .filter-buttons {
+        width: 100%;
+        overflow-x: auto;
+        padding-bottom: var(--spacing-sm);
+    }
+
+    .filter-btn {
+        flex-shrink: 0;
+    }
+
+    .heatmap-placeholder {
+        min-height: 300px;
+    }
+
+    .risk-cards-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .stat-icon {
+        width: 48px;
+        height: 48px;
+    }
+
+    .stat-icon svg {
+        width: 24px;
+        height: 24px;
+    }
+
+    .stat-info .stat-value {
+        font-size: var(--font-size-xl);
+    }
+}

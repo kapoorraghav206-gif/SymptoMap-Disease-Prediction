@@ -1,0 +1,59 @@
+.progressive-blur-demo {
+    width: 100%;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+    background-color: #ffffff;
+    overflow: hidden;
+}
+
+.progressive-blur-scroll {
+    position: relative;
+    height: 400px;
+    overflow: hidden;
+}
+
+.progressive-blur-content {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 16px;
+}
+
+.progressive-blur-item {
+    background-color: #f8fafc;
+    display: flex;
+    height: 80px;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #334155;
+    transition: all 0.2s ease;
+}
+
+.progressive-blur-item:hover {
+    background-color: #f1f5f9;
+    border-color: #cbd5e1;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+/* Responsive design */
+@media (max-width: 640px) {
+    .progressive-blur-demo {
+        border-radius: 8px;
+    }
+
+    .progressive-blur-content {
+        padding: 12px;
+        gap: 6px;
+    }
+
+    .progressive-blur-item {
+        height: 60px;
+        font-size: 1.25rem;
+    }
+}

@@ -1,0 +1,174 @@
+/**
+ * Navbar Component Styles
+ * 
+ * Styles for the navigation bar including responsive design
+ * and mobile menu animations.
+ */
+
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--color-gray-100);
+    box-shadow: var(--shadow-sm);
+}
+
+.navbar-container {
+    display: grid;
+    grid-template-columns: 1fr auto auto auto;
+    align-items: center;
+    gap: var(--spacing-md);
+    height: 70px;
+}
+
+/* Brand / Logo */
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    text-decoration: none;
+    transition: opacity var(--transition-fast);
+}
+
+.navbar-brand:hover {
+    opacity: 0.85;
+}
+
+.navbar-logo {
+    width: 36px;
+    height: 36px;
+}
+
+.navbar-title {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+    background: var(--gradient-hero);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Navigation Menu */
+.navbar-menu {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+}
+
+.navbar-link {
+    padding: var(--spacing-sm) var(--spacing-lg);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-gray-600);
+    text-decoration: none;
+    border-radius: var(--radius-lg);
+    transition: all var(--transition-fast);
+}
+
+.navbar-link:hover {
+    color: var(--color-primary);
+    background: var(--color-primary-subtle);
+}
+
+.navbar-link.active {
+    color: var(--color-primary);
+    background: var(--color-primary-subtle);
+}
+
+/* Mobile Toggle Button */
+.navbar-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 40px;
+    height: 40px;
+    padding: 8px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    border-radius: var(--radius-md);
+    transition: background var(--transition-fast);
+}
+
+.navbar-toggle:hover {
+    background: var(--color-gray-100);
+}
+
+.toggle-bar {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--color-gray-600);
+    border-radius: 2px;
+    transition: all var(--transition-base);
+}
+
+/* Hamburger animation */
+.navbar-toggle.active .toggle-bar:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.navbar-toggle.active .toggle-bar:nth-child(2) {
+    opacity: 0;
+}
+
+.navbar-toggle.active .toggle-bar:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .navbar-toggle {
+        display: flex;
+    }
+
+    .navbar-menu {
+        position: absolute;
+        top: 70px;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        background: var(--color-white);
+        padding: var(--spacing-lg);
+        border-bottom: 1px solid var(--color-gray-100);
+        box-shadow: var(--shadow-lg);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-10px);
+        transition: all var(--transition-base);
+    }
+
+    .navbar-menu.open {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    .navbar-link {
+        width: 100%;
+        padding: var(--spacing-md) var(--spacing-lg);
+        text-align: center;
+    }
+
+    .navbar-container {
+        grid-template-columns: 1fr auto auto;
+    }
+}
+
+/* Dark Mode Navbar Styles */
+:root[data-theme="dark"] .navbar {
+    background: rgba(15, 23, 42, 0.95);
+    border-bottom: 1px solid var(--color-gray-100);
+}
+
+:root[data-theme="dark"] .navbar-menu {
+    background: var(--color-gray-50);
+}
+
+:root[data-theme="dark"] .toggle-bar {
+    background: var(--color-gray-500);
+}

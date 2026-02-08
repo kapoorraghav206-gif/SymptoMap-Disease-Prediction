@@ -1,0 +1,122 @@
+/**
+ * Report Page Styles
+ * 
+ * Styles for the symptom reporting page.
+ */
+
+
+.report-page {
+    background: linear-gradient(180deg, var(--color-gray-50) 0%, var(--color-white) 100%);
+    min-height: 100vh;
+    padding-bottom: var(--spacing-3xl);
+}
+
+/* Report Info Section */
+
+.report-info {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-3xl);
+}
+
+
+.info-item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-lg);
+    padding: var(--spacing-xl);
+    background: var(--color-white);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-md);
+    transition: all var(--transition-base);
+    min-height: 140px;
+}
+
+.info-item:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
+}
+
+
+.info-icon {
+    flex-shrink: 0;
+    width: 56px;
+    height: 56px;
+    background: var(--color-primary-subtle);
+    border-radius: var(--radius-xl);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.info-icon svg {
+    width: 28px;
+    height: 28px;
+    color: var(--color-primary);
+}
+
+
+.info-content h4 {
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-gray-800);
+    margin-bottom: var(--spacing-xs);
+}
+
+.info-content p {
+    font-size: var(--font-size-sm);
+    color: var(--color-gray-500);
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* Form Container */
+
+.report-form-container {
+    max-width: 700px;
+    margin: 0 auto;
+    background: var(--color-white);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-md);
+    padding: var(--spacing-2xl) var(--spacing-xl);
+}
+
+/* Responsive */
+
+@media (max-width: 1024px) {
+    .report-info {
+        grid-template-columns: 1fr 1fr;
+        gap: var(--spacing-lg);
+    }
+}
+
+@media (max-width: 768px) {
+    .report-info {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+    .info-item {
+        padding: var(--spacing-lg);
+    }
+    .report-form-container {
+        padding: var(--spacing-xl) var(--spacing-md);
+    }
+}
+
+@media (max-width: 480px) {
+    .info-icon {
+        width: 40px;
+        height: 40px;
+    }
+    .info-icon svg {
+        width: 20px;
+        height: 20px;
+    }
+    .info-item {
+        padding: var(--spacing-md);
+    }
+    .report-form-container {
+        padding: var(--spacing-lg) var(--spacing-xs);
+    }
+}

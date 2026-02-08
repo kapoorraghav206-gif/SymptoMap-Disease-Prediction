@@ -1,0 +1,170 @@
+/**
+ * RiskCard Component Styles
+ * 
+ * Styles for the risk card including risk level
+ * color coding and hover effects.
+ */
+
+.risk-card {
+    background: var(--color-white);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+    transition: all var(--transition-base);
+    border-left: 4px solid transparent;
+}
+
+.risk-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-xl);
+}
+
+/* Risk Level Border Colors */
+.risk-card.risk-low {
+    border-left-color: var(--risk-low);
+}
+
+.risk-card.risk-medium {
+    border-left-color: var(--risk-medium);
+}
+
+.risk-card.risk-high {
+    border-left-color: var(--risk-high);
+}
+
+/* Card Header */
+.risk-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--spacing-lg);
+    padding-bottom: 0;
+}
+
+.risk-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.risk-icon svg {
+    width: 24px;
+    height: 24px;
+}
+
+.risk-low .risk-icon {
+    background: rgba(34, 197, 94, 0.1);
+    color: var(--risk-low);
+}
+
+.risk-medium .risk-icon {
+    background: rgba(245, 158, 11, 0.1);
+    color: var(--risk-medium);
+}
+
+.risk-high .risk-icon {
+    background: rgba(239, 68, 68, 0.1);
+    color: var(--risk-high);
+}
+
+/* High risk pulsing animation */
+.risk-high .risk-icon {
+    animation: pulse 2s ease-in-out infinite;
+}
+
+/* Card Body */
+.risk-card-body {
+    padding: var(--spacing-lg);
+}
+
+.risk-location {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-gray-800);
+    margin-bottom: var(--spacing-md);
+}
+
+/* Risk Stats */
+.risk-stats {
+    display: flex;
+    gap: var(--spacing-xl);
+}
+
+.risk-stat {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+}
+
+.stat-value {
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-gray-800);
+    line-height: 1;
+}
+
+.stat-label {
+    font-size: var(--font-size-xs);
+    color: var(--color-gray-500);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.stat-trend {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+}
+
+.stat-trend svg {
+    width: 16px;
+    height: 16px;
+}
+
+.trend-up {
+    color: var(--risk-high);
+}
+
+.trend-down {
+    color: var(--risk-low);
+}
+
+.trend-stable {
+    color: var(--color-gray-500);
+}
+
+/* Card Footer */
+.risk-card-footer {
+    padding: var(--spacing-md) var(--spacing-lg);
+    background: var(--color-gray-50);
+    border-top: 1px solid var(--color-gray-100);
+}
+
+.last-updated {
+    font-size: var(--font-size-xs);
+    color: var(--color-gray-400);
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .risk-card-body {
+        padding: var(--spacing-md);
+    }
+
+    .risk-location {
+        font-size: var(--font-size-lg);
+    }
+
+    .risk-stats {
+        gap: var(--spacing-lg);
+    }
+
+    .stat-value {
+        font-size: var(--font-size-xl);
+    }
+}

@@ -1,0 +1,73 @@
+.progressive-blur {
+    position: absolute;
+    pointer-events: none;
+    z-index: 10;
+}
+
+/* Bottom position (default) */
+.progressive-blur-bottom {
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top,
+            rgba(255, 255, 255, 0.95) 0%,
+            rgba(255, 255, 255, 0.7) 30%,
+            rgba(255, 255, 255, 0.3) 60%,
+            rgba(255, 255, 255, 0) 100%);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+/* Top position */
+.progressive-blur-top {
+    top: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to bottom,
+            rgba(255, 255, 255, 0.95) 0%,
+            rgba(255, 255, 255, 0.7) 30%,
+            rgba(255, 255, 255, 0.3) 60%,
+            rgba(255, 255, 255, 0) 100%);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+/* Left position */
+.progressive-blur-left {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(to right,
+            rgba(255, 255, 255, 0.95) 0%,
+            rgba(255, 255, 255, 0.7) 30%,
+            rgba(255, 255, 255, 0.3) 60%,
+            rgba(255, 255, 255, 0) 100%);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+/* Right position */
+.progressive-blur-right {
+    top: 0;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(to left,
+            rgba(255, 255, 255, 0.95) 0%,
+            rgba(255, 255, 255, 0.7) 30%,
+            rgba(255, 255, 255, 0.3) 60%,
+            rgba(255, 255, 255, 0) 100%);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+/* Dark theme variant - add this class to parent container for dark mode */
+.dark-mode .progressive-blur-bottom,
+.dark-mode .progressive-blur-top,
+.dark-mode .progressive-blur-left,
+.dark-mode .progressive-blur-right {
+    background: linear-gradient(var(--gradient-direction),
+            rgba(0, 0, 0, 0.95) 0%,
+            rgba(0, 0, 0, 0.7) 30%,
+            rgba(0, 0, 0, 0.3) 60%,
+            rgba(0, 0, 0, 0) 100%);
+}

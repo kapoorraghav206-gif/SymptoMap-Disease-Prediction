@@ -1,0 +1,518 @@
+/* ============================================
+   SYMPTOM REPORT - DASHBOARD STYLE
+   Modern Healthcare Dashboard UI
+   Card-based disease selection
+   ============================================ */
+
+/* Container */
+.symptom-report-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    min-height: 100vh;
+}
+
+.symptom-report-wrapper {
+    background: white;
+    border-radius: 24px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+}
+
+/* Header */
+.report-header {
+    background: linear-gradient(135deg, #2563eb 0%, #3b82f6 50%, #14b8a6 100%);
+    padding: 48px 32px;
+    text-align: center;
+    color: white;
+}
+
+.report-header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: 0 0 12px 0;
+    letter-spacing: -0.5px;
+}
+
+.report-header p {
+    font-size: 1.125rem;
+    margin: 0;
+    opacity: 0.95;
+}
+
+/* Form Section */
+.report-form-section {
+    padding: 40px 32px;
+}
+
+/* Form Inputs */
+.form-inputs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-bottom: 40px;
+}
+
+.form-input-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-input-group label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 10px;
+}
+
+.form-input {
+    padding: 14px 18px;
+    border: 2px solid #e5e7eb;
+    border-radius: 16px;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #1f2937;
+    background: white;
+    transition: all 0.2s ease;
+    outline: none;
+}
+
+.form-input:hover {
+    border-color: #d1d5db;
+}
+
+.form-input:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+}
+
+/* Section Title */
+.section-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1f2937;
+    margin: 0 0 24px 0;
+}
+
+/* Disease Cards Section */
+.disease-cards-section {
+    margin-bottom: 32px;
+}
+
+.disease-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+/* ============================================
+   DISEASE CARD COMPONENT
+   ============================================ */
+
+.disease-card {
+    position: relative;
+    background: white;
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    text-align: left;
+    width: 100%;
+    padding: 0;
+}
+
+.disease-card:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+}
+
+.disease-card:active {
+    transform: translateY(-2px) scale(1.01);
+}
+
+/* Selected State */
+.disease-card.selected {
+    box-shadow: 0 0 0 3px var(--accent-color, #3b82f6),
+        0 12px 24px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+}
+
+.disease-card.selected .disease-card-accent {
+    width: 6px;
+}
+
+/* Left Accent Bar */
+.disease-card-accent {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: #e5e7eb;
+    transition: width 0.3s ease;
+}
+
+/* Card Content */
+.disease-card-content {
+    padding: 20px;
+    padding-left: 24px;
+}
+
+/* Header Row: Icon + Badge */
+.disease-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+
+.disease-icon-container {
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.disease-icon {
+    font-size: 28px;
+    line-height: 1;
+}
+
+.risk-badge {
+    font-size: 0.675rem;
+    font-weight: 700;
+    padding: 6px 10px;
+    border-radius: 8px;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+}
+
+/* Disease Title */
+.disease-card-title {
+    margin-bottom: 12px;
+}
+
+.disease-card-title h3 {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: #1f2937;
+    margin: 0 0 4px 0;
+    line-height: 1.3;
+}
+
+.disease-count {
+    font-size: 0.875rem;
+    color: #6b7280;
+    font-weight: 500;
+}
+
+/* Trend Section */
+.disease-card-trend {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.875rem;
+    color: #6b7280;
+    font-weight: 600;
+}
+
+.trend-icon {
+    font-size: 1rem;
+}
+
+.trend-text {
+    text-transform: capitalize;
+}
+
+/* ============================================
+   SUBMIT CARD COMPONENT
+   ============================================ */
+
+.submit-card {
+    position: relative;
+    background: white;
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    width: 100%;
+    padding: 0;
+    margin-bottom: 24px;
+}
+
+.submit-card:hover:not(.disabled) {
+    transform: translateY(-4px) scale(1.01);
+    box-shadow: 0 16px 32px rgba(37, 99, 235, 0.2);
+}
+
+.submit-card:active:not(.disabled) {
+    transform: translateY(-1px) scale(0.99);
+}
+
+.submit-card.disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Top Blue Accent */
+.submit-card-accent {
+    height: 4px;
+    background: linear-gradient(90deg, #2563eb 0%, #3b82f6 100%);
+}
+
+/* Submit Card Content */
+.submit-card-content {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 24px 28px;
+}
+
+.submit-icon-container {
+    width: 56px;
+    height: 56px;
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.submit-icon {
+    width: 32px;
+    height: 32px;
+    color: white;
+}
+
+.submit-spinner {
+    width: 32px;
+    height: 32px;
+    color: white;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.submit-card-text {
+    flex: 1;
+}
+
+.submit-card-text h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1f2937;
+    margin: 0 0 4px 0;
+}
+
+.submit-card-text p {
+    font-size: 0.9rem;
+    color: #6b7280;
+    margin: 0;
+    font-weight: 500;
+}
+
+.submit-arrow {
+    width: 24px;
+    height: 24px;
+    color: #3b82f6;
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+}
+
+.submit-card:hover:not(.disabled) .submit-arrow {
+    transform: translateX(4px);
+}
+
+/* ============================================
+   ERROR MESSAGE
+   ============================================ */
+
+.error-message {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 20px;
+    background: #fef2f2;
+    border: 2px solid #fecaca;
+    border-radius: 16px;
+    color: #dc2626;
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 24px;
+}
+
+.error-icon {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+}
+
+/* ============================================
+   SUCCESS MESSAGE
+   ============================================ */
+
+.success-message-card {
+    background: white;
+    border-radius: 24px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    padding: 60px 40px;
+    text-align: center;
+    max-width: 600px;
+    margin: 80px auto;
+}
+
+.success-icon-container {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 24px;
+    box-shadow: 0 8px 24px rgba(34, 197, 94, 0.3);
+}
+
+.success-icon {
+    width: 40px;
+    height: 40px;
+    color: white;
+}
+
+.success-message-card h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1f2937;
+    margin: 0 0 12px 0;
+}
+
+.success-message-card p {
+    font-size: 1.125rem;
+    color: #6b7280;
+    margin: 0;
+}
+
+/* ============================================
+   PRIVACY NOTICE
+   ============================================ */
+
+.privacy-notice {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 0.9rem;
+    color: #6b7280;
+    text-align: center;
+    margin: 0;
+}
+
+.privacy-icon {
+    font-size: 1.125rem;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+/* Tablet: 2 columns */
+@media (max-width: 1200px) {
+    .disease-cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .report-header h1 {
+        font-size: 2rem;
+    }
+}
+
+/* Mobile: 1 column */
+@media (max-width: 768px) {
+    .symptom-report-container {
+        padding: 20px 16px;
+    }
+
+    .report-header {
+        padding: 32px 24px;
+    }
+
+    .report-header h1 {
+        font-size: 1.75rem;
+    }
+
+    .report-header p {
+        font-size: 1rem;
+    }
+
+    .report-form-section {
+        padding: 24px 20px;
+    }
+
+    .form-inputs-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .disease-cards-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .section-title {
+        font-size: 1.25rem;
+    }
+
+    .submit-card-content {
+        padding: 20px;
+    }
+
+    .submit-card-text h3 {
+        font-size: 1.125rem;
+    }
+
+    .success-message-card {
+        padding: 40px 24px;
+        margin: 40px auto;
+    }
+
+    .success-message-card h2 {
+        font-size: 1.5rem;
+    }
+
+    .success-message-card p {
+        font-size: 1rem;
+    }
+}
+
+/* Small mobile adjustments */
+@media (max-width: 480px) {
+    .disease-card-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .risk-badge {
+        align-self: flex-start;
+    }
+
+    .submit-arrow {
+        display: none;
+    }
+}

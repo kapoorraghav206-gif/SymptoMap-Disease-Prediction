@@ -1,0 +1,433 @@
+/**
+ * SymptomForm Component Styles
+ * 
+ * Styles for the symptom submission form including:
+ * - Form layout and inputs
+ * - Symptom selection cards
+ * - Success message
+ * - Error states
+ */
+
+/* === Form Container === */
+
+.symptom-form-wrapper {
+    max-width: 900px;
+    margin: 3rem auto;
+    padding: 0 1rem;
+}
+
+.symptom-form-card {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    border-radius: 1.5rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--color-gray-100);
+    overflow: hidden;
+}
+
+/* === Form Header === */
+
+.form-header {
+    background: linear-gradient(135deg, #0077b6 0%, #00a8e8 50%, #2a9d8f 100%);
+    padding: 2rem;
+    text-align: center;
+}
+
+.form-header-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 0.5rem;
+}
+
+.form-header-subtitle {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.125rem;
+}
+
+/* === Form Content === */
+
+.form-content {
+    padding: 2.5rem;
+}
+
+/* === Input Grid === */
+
+.form-input-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-field-label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-gray-700);
+    margin-bottom: 0.75rem;
+}
+
+.form-field-input,
+.form-field-select {
+    width: 100%;
+    padding: 0.875rem 1.25rem;
+    border: 2px solid var(--color-gray-200);
+    border-radius: 1rem;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--color-gray-700);
+    background: white;
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+.form-field-input:hover,
+.form-field-select:hover {
+    border-color: var(--color-gray-300);
+}
+
+.form-field-input:focus,
+.form-field-select:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 4px rgba(0, 119, 182, 0.1);
+}
+
+.form-field-select {
+    cursor: pointer;
+}
+
+/* === Symptoms Section === */
+
+.symptoms-section {
+    margin-bottom: 2rem;
+}
+
+.symptoms-section-label {
+    display: block;
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--color-gray-800);
+    margin-bottom: 1.25rem;
+}
+
+.symptoms-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+/* === Symptom Card === */
+
+.symptom-card {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: white;
+    border: 2px solid var(--color-gray-200);
+    border-radius: 1rem;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    text-align: left;
+    width: 100%;
+}
+
+.symptom-card:hover {
+    border-color: var(--color-primary-light);
+    background: rgba(0, 168, 232, 0.03);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.symptom-card.selected {
+    border-color: var(--color-primary);
+    background: linear-gradient(135deg, rgba(0, 119, 182, 0.05) 0%, rgba(0, 168, 232, 0.1) 100%);
+    color: var(--color-primary-dark);
+    box-shadow: 0 8px 20px rgba(0, 119, 182, 0.15);
+    transform: scale(1.02);
+}
+
+.symptom-icon {
+    font-size: 2rem;
+    flex-shrink: 0;
+}
+
+.symptom-info {
+    flex: 1;
+}
+
+.symptom-label {
+    display: block;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.symptom-status {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-top: 0.25rem;
+    color: var(--color-gray-400);
+}
+
+.symptom-card.selected .symptom-status {
+    color: var(--color-primary);
+}
+
+.symptom-check {
+    width: 2rem;
+    height: 2rem;
+    background: var(--color-primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.symptom-check svg {
+    width: 1.25rem;
+    height: 1.25rem;
+    color: white;
+}
+
+/* === Error Message === */
+
+.error-message {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background: rgba(239, 68, 68, 0.05);
+    border: 2px solid rgba(239, 68, 68, 0.2);
+    color: #dc2626;
+    border-radius: 1rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.error-icon {
+    width: 1.25rem;
+    height: 1.25rem;
+    flex-shrink: 0;
+}
+
+/* === Submit Button === */
+
+.submit-button {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    background: linear-gradient(135deg, #0077b6 0%, #00a8e8 100%);
+    color: white;
+    font-weight: 700;
+    font-size: 1.125rem;
+    padding: 1.25rem;
+    border-radius: 1rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 8px 16px rgba(0, 119, 182, 0.25);
+}
+
+.submit-button:hover:not(:disabled) {
+    transform: scale(1.02);
+    box-shadow: 0 12px 24px rgba(0, 119, 182, 0.35);
+    background: linear-gradient(135deg, #005f8f 0%, #0077b6 100%);
+}
+
+.submit-button:active:not(:disabled) {
+    transform: scale(0.98);
+}
+
+.submit-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.submit-button-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.submit-spinner {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* === Privacy Notice === */
+
+.privacy-notice {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+    font-size: 0.875rem;
+    color: var(--color-gray-500);
+    text-align: center;
+}
+
+.privacy-notice-icon {
+    font-size: 1.125rem;
+}
+
+/* === Success State === */
+
+.success-wrapper {
+    max-width: 600px;
+    margin: 3rem auto;
+    padding: 0 1rem;
+}
+
+.success-card {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    padding: 2.5rem;
+    border-radius: 1.5rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--color-gray-100);
+    text-align: center;
+}
+
+.success-icon-wrapper {
+    width: 5rem;
+    height: 5rem;
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    box-shadow: 0 8px 16px rgba(16, 185, 129, 0.3);
+}
+
+.success-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    color: white;
+}
+
+.success-title {
+    font-size: 1.875rem;
+    font-weight: 700;
+    color: var(--color-gray-900);
+    margin-bottom: 0.75rem;
+}
+
+.success-message {
+    color: var(--color-gray-600);
+    font-size: 1.125rem;
+    margin-bottom: 2rem;
+}
+
+.success-button {
+    width: 100%;
+    background: linear-gradient(135deg, #0077b6 0%, #00a8e8 100%);
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 1rem;
+    font-weight: 600;
+    font-size: 1.125rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 8px 16px rgba(0, 119, 182, 0.25);
+}
+
+.success-button:hover {
+    transform: scale(1.02);
+    box-shadow: 0 12px 24px rgba(0, 119, 182, 0.35);
+    background: linear-gradient(135deg, #005f8f 0%, #0077b6 100%);
+}
+
+.success-button:active {
+    transform: scale(0.98);
+}
+
+/* === Responsive Design === */
+
+@media (max-width: 768px) {
+    .form-content {
+        padding: 2rem 1.5rem;
+    }
+
+    .form-input-grid {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+    }
+
+    .symptoms-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-header-title {
+        font-size: 1.75rem;
+    }
+
+    .form-header-subtitle {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .symptom-form-wrapper,
+    .success-wrapper {
+        padding: 0 0.5rem;
+    }
+
+    .form-content {
+        padding: 1.5rem 1rem;
+    }
+
+    .symptom-card {
+        padding: 0.875rem 1rem;
+    }
+
+    .symptom-icon {
+        font-size: 1.75rem;
+    }
+
+    .submit-button {
+        font-size: 1rem;
+        padding: 1rem;
+    }
+
+    .success-card {
+        padding: 2rem 1.5rem;
+    }
+
+    .success-icon-wrapper {
+        width: 4rem;
+        height: 4rem;
+    }
+
+    .success-icon {
+        width: 2rem;
+        height: 2rem;
+    }
+
+    .success-title {
+        font-size: 1.5rem;
+    }
+
+    .success-message {
+        font-size: 1rem;
+    }
+}
